@@ -4,6 +4,7 @@ from PyQt6.QtCharts import QValueAxis, QChart, QChartView, QLineSeries
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QDoubleValidator, QIntValidator
 
+print("hi")
 
 class ImportPage(QWidget):
     def __init__(self):
