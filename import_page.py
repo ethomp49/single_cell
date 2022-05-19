@@ -178,18 +178,32 @@ class ParamField(QWidget):
     def __init__(self, label, validator, unit):
         super(ParamField, self).__init__()
 
-        self.label = QLabel(label)
+        # Setting widget to a QHBoxLayout
+
+        self.field_layout = QHBoxLayout()
+        self.setLayout(self.field_layout)
+
+        # Creating the components of the custom widget
+
+        param_widgets = [QLabel(label), QLineEdit(), QLabel(unit)]
+        self.label, self.field, self.unit = param_widgets
+
+        # Setting label properties
+
         self.label.setFixedWidth(150)
         self.label.setAlignment(Qt.AlignmentFlag.AlignRight)
 
-        self.field = QLineEdit()
+        # Setting input validator
+
         self.field.setValidator(validator)
 
-        self.unit = QLabel(unit)
+        # Setting button properties
+
         self.unit.setFixedWidth(100)
 
-        self.field_layout = QHBoxLayout()
-        self.field_layout.addWidget(self.label)
-        self.field_layout.addWidget(self.field)
-        self.field_layout.addWidget(self.unit)
-        self.setLayout(self.field_layout)
+        # Adding the components to the layout
+
+        for widget in param_widgets:
+            self.field_layout.addWidget(widget)
+
+

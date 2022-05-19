@@ -1,10 +1,9 @@
-from PyQt6.QtWidgets import QMainWindow, QWidget, QVBoxLayout, QHBoxLayout, QStackedWidget, QTabBar, QPushButton, \
-    QLabel, QGridLayout, QLineEdit, QTableWidget, QTableWidgetItem, QHeaderView
-from PyQt6.QtCharts import QChart, QChartView, QLineSeries, QValueAxis
-from PyQt6.QtCore import Qt
-from PyQt6.QtGui import QDoubleValidator, QIntValidator, QValidator
-
+from PyQt6.QtWidgets import QMainWindow, QStackedWidget, QTabBar
 from import_page import *
+from histogram_page import *
+from consecutive_page import *
+from particle_page import *
+from collected_page import *
 
 
 class MainWindow(QMainWindow):
@@ -32,7 +31,7 @@ class MainWindow(QMainWindow):
 
         # ----------------------------------------Histogram Window-----------------------------------------------------
 
-        self.histogram_window = QWidget()
+        self.histogram_tab = HistogramPage()
 
         # ----------------------------------Consecutive Particles Window-----------------------------------------------
 
@@ -44,17 +43,16 @@ class MainWindow(QMainWindow):
 
         self.collected_data_window = QWidget()
 
-        stack_widgets = [self.import_tab, self.histogram_window, self.consecutive_particles_window,
+        stack_widgets = [self.import_tab, self.histogram_tab, self.consecutive_particles_window,
                          self.corrected_particle_data_window, self.collected_data_window]
         for widget in stack_widgets:
             self.stack.addWidget(widget)
 
         self.main_layout.addWidget(self.stack)
 
+        self.tab_bar.tabBarClicked.connect(self.tab_bar_clicked)
+
         self.show()
 
-
-
-
-
-
+    def tab_bar_clicked(self, index):
+        self.stack.setCurrentIndex(index)
