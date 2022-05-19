@@ -4,39 +4,26 @@ from PyQt6.QtCharts import QValueAxis, QChart, QChartView, QLineSeries
 from PyQt6.QtCore import Qt
 from PyQt6.QtGui import QDoubleValidator, QIntValidator
 
-print("hi")
 
 class ImportPage(QWidget):
     def __init__(self):
         super(ImportPage, self).__init__()
+
+        # Setting the import page to a QVBoxLayout
+
         self.page_layout = QVBoxLayout()
-
-        # ---- Chart Section ----
-
-        self.chart_section = ChartSection()
-        self.page_layout.addWidget(self.chart_section)
-
-        # ---- Import Section ----
-
-        self.import_section = ImportSection()
-        self.page_layout.addWidget(self.import_section)
-
-        # ---- Parameters Section ----
-
-        self.parameters_section = ParametersSection()
-        self.page_layout.addWidget(self.parameters_section)
-
-        # ---- Sample Info Section ----
-
-        self.sample_info_section = SampleInfoSection()
-        self.page_layout.addWidget(self.sample_info_section)
-
-        # ---- Collection Section ----
-
-        self.collection_section = CollectionSection()
-        self.page_layout.addWidget(self.collection_section)
-
         self.setLayout(self.page_layout)
+
+        # Creating the individual sections from subclasses
+
+        sections = [ChartSection(), ImportSection(), ParametersSection(), SampleInfoSection(), CollectionSection()]
+        self.chart_section, self.import_section, self.parameters_section, \
+            self.sample_info_section, self.collection_section = sections
+
+        # Adding the sections to the layout
+
+        for section in sections:
+            self.page_layout.addWidget(section)
 
 
 # ----Chart Section----
