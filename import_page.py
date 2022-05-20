@@ -133,7 +133,7 @@ class SampleInfoSection(QTableWidget):
 
         self.resizeColumnsToContents()
         self.horizontalHeader().setSectionsClickable(False)
-        self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Fixed)
+        self.horizontalHeader().setSectionResizeMode(QHeaderView.ResizeMode.Stretch)
 
         # Pre-populating the table with non-interactive items
 

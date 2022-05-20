@@ -5,13 +5,13 @@ from PyQt6.QtCore import Qt
 
 
 class HistogramPage(QWidget):
-    def __init__(self):
+    def __init__(self, title):
         super(HistogramPage, self).__init__()
 
         self.page_layout = QVBoxLayout()
         self.setLayout(self.page_layout)
 
-        sections = [ChartSection(), InputSection()]
+        sections = [ChartSection(title), InputSection()]
         self.chart_section, self.input_section = sections
 
         for section in sections:
@@ -19,11 +19,11 @@ class HistogramPage(QWidget):
 
 
 class ChartSection(QChartView):
-    def __init__(self):
+    def __init__(self, title):
         super(ChartSection, self).__init__()
 
         self.chart = QChart()
-        self.chart.setTitle('Signal Distribution')
+        self.chart.setTitle(title)
 
         self.x_axis, self.y_axis = [QValueAxis(), QValueAxis()]
 

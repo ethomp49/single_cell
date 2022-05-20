@@ -10,7 +10,7 @@ class MainWindow(QMainWindow):
     def __init__(self):
         super(MainWindow, self).__init__()
         self.setWindowTitle("Single Cell Data Processor")
-        self.setMinimumSize(1005, 600)
+        self.setMinimumSize(1005, 800)
 
         self.main_window = QWidget()
         self.main_layout = QVBoxLayout()
@@ -25,26 +25,18 @@ class MainWindow(QMainWindow):
 
         self.stack = QStackedWidget()
 
-        # -------------------------------------------- Import Page --------------------------------------------
-
         self.import_tab = ImportPage()
 
-        # ----------------------------------------Histogram Window-----------------------------------------------------
-
-        self.histogram_tab = HistogramPage()
-
-        # ----------------------------------Consecutive Particles Window-----------------------------------------------
+        self.histogram_tab = HistogramPage('Particle Distribution')
 
         self.consecutive_tab = ConsecutivePage()
 
-        # --------------------------------------Particle Data Window---------------------------------------------------
-
-        self.corrected_particle_data_window = QWidget()
+        self.particle_tab = ParticlePage()
 
         self.collected_data_window = QWidget()
 
         stack_widgets = [self.import_tab, self.histogram_tab, self.consecutive_tab,
-                         self.corrected_particle_data_window, self.collected_data_window]
+                         self.particle_tab, self.collected_data_window]
         for widget in stack_widgets:
             self.stack.addWidget(widget)
 
