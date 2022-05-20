@@ -35,7 +35,7 @@ class MainWindow(QMainWindow):
 
         # ----------------------------------Consecutive Particles Window-----------------------------------------------
 
-        self.consecutive_particles_window = QWidget()
+        self.consecutive_tab = ConsecutivePage()
 
         # --------------------------------------Particle Data Window---------------------------------------------------
 
@@ -43,7 +43,7 @@ class MainWindow(QMainWindow):
 
         self.collected_data_window = QWidget()
 
-        stack_widgets = [self.import_tab, self.histogram_tab, self.consecutive_particles_window,
+        stack_widgets = [self.import_tab, self.histogram_tab, self.consecutive_tab,
                          self.corrected_particle_data_window, self.collected_data_window]
         for widget in stack_widgets:
             self.stack.addWidget(widget)
